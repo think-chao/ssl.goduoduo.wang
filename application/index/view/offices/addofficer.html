@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {include file='public/head'\}
+    <![endif]-->
+</head>
+
+<body>
+<div class="x-body">
+    <form class="layui-form" method="post" action="{:url('add')}">
+        <div class="layui-form-item">
+            <label for="username" class="layui-form-label">
+                <span class="x-red">*</span>姓名
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="username" name="username" required="" lay-verify="required"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="wid" class="layui-form-label">
+                <span class="x-red">*</span>微信校园卡卡号
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="wid" name="wid" required=""
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label for="L_repass" class="layui-form-label">
+            </label>
+            <button  class="layui-btn" type="submit" lay-filter="add">
+                增加
+            </button>
+        </div>
+    </form>
+</div>
+<script>
+    layui.use(['form','layer'], function(){
+        $ = layui.jquery;
+        var form = layui.form
+                ,layer = layui.layer;
+
+        //监听提交
+
+
+/*        $("#addbtn").click(function(){
+            $.ajax({
+                type:'POST',
+                url:"{:url('add')}",
+                data: $(".layui-form").serialize(),
+                dataType:"json",
+                success:function(data){
+                    if(data.iscorrect){
+                        alert("添加成功");
+                    }
+                    else {
+                        alert("添加失败");
+                    }
+                },
+                error:function(){
+                    alert("无法添加");
+                }
+
+            })
+        })*/
+
+
+    });
+</script>
+<
+</body>
+
+</html>

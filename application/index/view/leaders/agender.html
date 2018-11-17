@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<!--1、先制作表格用tr th和tr td
+    2、若要建立叠加的表格，必须建立一个盒子通过覆盖将表格分成两份
+    3、新见得盒子必须绝对定位于表格。
+    4、然后将盒子和表格覆盖。完成
+-->
+<head>
+    {include file='public/head'\}
+    <meta charset="utf-8">
+    <title>复杂表格的学习</title>
+    <style>
+        .title{
+            align-content:center;
+            font-size: large;
+        }
+        body{
+            margin-top: 15px;
+            position: relative;
+        }
+        *{
+            padding: 0;
+            margin: 0 auto;
+        }
+        table{
+            table-layout:fixed;
+            word-break:break-all;
+            word-wrap: break-word;
+            width: 920px;
+            font-size: 14px;
+            border-collapse: collapse;/*将边框合并成单一的边框*/
+            border: 1px solid #c3c3c3;
+            color: #222222;
+        }
+        table tr{
+            height: 40px;
+            border: 1px solid #c3c3c3;
+        }
+        table tr td{
+            text-align: center;
+            border: 1px solid #C3C3C3;
+        }
+        table tr th{
+            border: 1px solid #C3C3C3;
+            font-size: 14px;
+            font-weight: normal;/*不加粗*/
+        }
+
+    </style>
+</head>
+<body>
+
+
+<form action="{:url('leaders/excel')}">
+<xblock>
+    <button class="layui-btn" type="submit"><i class="layui-icon"></i>导出Excel</button>
+     <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+
+</xblock>
+</form>
+<p align="center" class="title">北京大学软件与微电子学院 领导周工作日程安排表</p>
+<p align="center" class="title">({$dayOne}-------------{$daySev})</p>
+<br>
+<table border="" cellspacing="" cellpadding="">
+    <tr>
+        <td rowspan="2">姓名</td><!--tr是一行，td是一列，th标题列-->
+        <td colspan="2">星期一</td>
+        <td colspan="2">星期二</td>
+        <td colspan="2">星期三</td>
+        <td colspan="2">星期四</td>
+        <td colspan="2">星期五</td>
+
+    </tr>
+    <tr>
+        <td>上午</td>
+        <td>下午</td>
+        <td>上午</td>
+        <td>下午</td>
+        <td>上午</td>
+        <td>下午</td>
+        <td>上午</td>
+        <td>下午</td>
+        <td>上午</td>
+        <td>下午</td>
+    </tr>
+
+   {volist name="week" id="vo"}
+    <p hidden>$key={$i-1}</p>
+        <tr>
+            <td>{$vo['name']}</td>
+            <td>{$vo['am1']}</td>
+            <td>{$vo['pm1']}</td>
+            <td>{$vo['am2']}</td>
+            <td>{$vo['pm2']}</td>
+            <td>{$vo['am3']}</td>
+            <td>{$vo['pm3']}</td>
+            <td>{$vo['am4']}</td>
+            <td>{$vo['pm4']}</td>
+            <td>{$vo['am5']}</td>
+            <td>{$vo['pm5']}</td>
+        </tr>
+    {/volist}
+
+
+</table>
+</body>
+</html>
